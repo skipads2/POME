@@ -1,4 +1,4 @@
-# 📊 Elasticity Streamlit App
+# Elasticity Streamlit App
 
 This app:
 - Calculates price elasticity of demand (PED) for each food item.
