@@ -1,0 +1,17 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+import pickle
+
+data = pd.read_csv("promotions_data.csv")
+X = pd.get_dummies(data[["Promotion Type","Region","Season"]])
+X["Price Elasticity"] = data["Price Elasticity"]
+y = data["Successful"]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Save
+pickle.dump(model, open("promotions_model.pkl", "wb"))
